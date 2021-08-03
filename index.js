@@ -1,10 +1,11 @@
 import {add} from './add.js';
+import { deleteWord } from './delete.js';
 import {showDictionary} from './dictionary.js'
 
 // ---------------------------------------------------------------------------------------
 let menu = `<nav id="navigation">
                 <button >Add</button>
-                <button >Remove</button>
+                <button >Delete</button>
                 <button >Translate</button>
                 <button >Eternal</button>
                 <button>Dictionary</button>
@@ -34,6 +35,11 @@ function clickMenu () {
     if (target.textContent == 'Dictionary') {
         clear ();
         showDictionary();
+    }
+
+    if (target.textContent == 'Delete') {
+        clear ();
+        deleteWord ();
     }
 } 
 

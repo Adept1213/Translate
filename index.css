@@ -3,6 +3,7 @@
     padding: 0%;
     box-sizing: border-box;
     text-align: center;
+    outline: none;
 }
 html {height: 100%;}
 body {height: 100%;}
@@ -52,9 +53,10 @@ button:hover {
     border-bottom: 2px solid gold;
 }
 @media (max-width : 767px) {
-    nav button {
+    button {
         width: 100%;
     }
+
 }
 /* add------------------------------------------------------- */
 main input {
@@ -80,14 +82,21 @@ main input {
 }
 
 table {
-    border-collapse: collapse;
     margin: 0% auto;
+    font-size: 20px;
 }
 
 th {
-    border: 2px solid white;
+    border-bottom: 1px solid rgb(255, 255, 255);
     width : 200px;
-    height: 50px;
+    height: 30px;
+    color: rgb(237, 255, 138);
+}
+td {
+    border-bottom: .5px solid white;
+    width : 200px;
+    height: 30px;
+    color: white;
 }
 
 
