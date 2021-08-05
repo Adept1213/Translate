@@ -9,10 +9,7 @@ export function deleteWord () {
     main.insertAdjacentHTML ('beforeend', str );
 
     deleteButton.addEventListener ('click', () => {
-        if (deleteFromStore (englishDelete.value)) {
-            englishDelete.removeAttribute ('placeholder')
-            englishDelete.setAttribute('placeholder', 'Eeeesss')
-        }
+        deleteFromStore (englishDelete.value)
     })
 }
 

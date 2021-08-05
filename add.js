@@ -10,8 +10,21 @@ export function add () {
     main.insertAdjacentHTML ('beforeend', str );
 
     buttonSave.addEventListener ('click', () => {
-        addInStore (englishAdd.value, russianAdd.value);
+        if (addInStore (englishAdd.value, russianAdd.value)) {
+            englishAdd.value = '';
+            russianAdd.value = '';
+        } else {
+            warningWrongInput ();
+        }
+    })
+}
+
+function warningWrongInput () {
+    englishAdd.value = 'wrong word';
+    englishAdd.style.color = 'red';
+    setTimeout (() => {
         englishAdd.value = '';
         russianAdd.value = '';
-    })
+        englishAdd.style.color = 'white ';   
+    }, 1000)
 }
