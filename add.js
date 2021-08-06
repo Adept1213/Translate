@@ -1,4 +1,5 @@
 import {addInStore} from './store.js';
+import {warningInput} from './index.js';
 
 let str = `
     <input id='englishAdd' placeholder='English'></input>
@@ -11,20 +12,9 @@ export function add () {
 
     buttonSave.addEventListener ('click', () => {
         if (addInStore (englishAdd.value, russianAdd.value)) {
-            englishAdd.value = '';
-            russianAdd.value = '';
+            warningInput ("Good", 'green', englishAdd, russianAdd);
         } else {
-            warningWrongInput ();
+            warningInput ("Already have or empty ", 'red', englishAdd, russianAdd);
         }
     })
-}
-
-function warningWrongInput () {
-    englishAdd.value = 'wrong word';
-    englishAdd.style.color = 'red';
-    setTimeout (() => {
-        englishAdd.value = '';
-        russianAdd.value = '';
-        englishAdd.style.color = 'white ';   
-    }, 1000)
 }

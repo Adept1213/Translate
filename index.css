@@ -37,11 +37,13 @@ nav {
 button {
     height: 10%;
     width: 30%;
+    min-width: 500px;
     display: block;
 
     margin: 0% auto;
 
     font-size: 30px;
+    opacity: 85%;
     
     color: white;
     background-color: rgb(0, 1, 34);
@@ -51,10 +53,12 @@ button {
 
 button:hover {
     border-bottom: 2px solid gold;
+    opacity: 100%;
 }
 @media (max-width : 767px) {
     button {
         width: 100%;
+        min-width: 1px;
     }
 
 }
@@ -62,12 +66,13 @@ button:hover {
 main input {
     height: 10%;
     width: 30%;
+    min-width: 500px;
     display: block;
 
     margin: 0% auto;
 
     font-size: 30px;  
-    
+
     color : white;
 
     background-color: rgb(0, 1, 34);
@@ -99,6 +104,11 @@ td {
     color: white;
 }
 
+.warning {
+    border: none;
+    color : red;
+    opacity: 80%;
+}
 
 
 /* footer ---------------------------------------------------- */

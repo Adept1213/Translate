@@ -43,7 +43,15 @@ function clickMenu () {
     }
 } 
 
+
+
 export function clear () {
     while (main.children.length > 0) main.firstChild.remove ()
 }
 
+export function warningInput (val, color, ...arr) {
+    let str = `<input disabled class='warning' value='${val}' style="color : ${color}"'>`;
+    main.insertAdjacentHTML ('beforeend', str);
+    for (let key of arr) key.value = '';
+    setTimeout (() => document.querySelector ('.warning').remove(), 2000)
+}
