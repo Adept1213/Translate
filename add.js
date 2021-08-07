@@ -1,4 +1,4 @@
-import {addInStore} from './store.js';
+import {addInDictionary} from './dictionary.js';
 import {warningInput} from './index.js';
 
 let str = `
@@ -11,7 +11,7 @@ export function add () {
     main.insertAdjacentHTML ('beforeend', str );
 
     buttonSave.addEventListener ('click', () => {
-        if (addInStore (englishAdd.value, russianAdd.value)) {
+        if (addInDictionary (englishAdd.value, russianAdd.value)) {
             warningInput ("Good", 'green', englishAdd, russianAdd);
         } else {
             warningInput ("Already have or empty ", 'red', englishAdd, russianAdd);

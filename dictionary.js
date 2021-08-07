@@ -1,25 +1,52 @@
-import {getStore} from './store.js';
 
-export function showDictionary () {
-    let table = document.createElement ('table');
-    let thE = document.createElement ('th')
-    thE.textContent = 'English';
-    let thR = document.createElement ('th');
-    thR.textContent = 'Russian';
-    table.append (thE, thR)
 
-    let store = getStore ();
-    for (let key of store) table.append(createTr (key[0], key[1]))
+export function addInDictionary (english, russian) {
+    let dictionary = checkExisting ();
 
-    main.append (table);
+    if (checkSimilarityEmpty (english, russian)) {
+        return false;
+    } else {
+        dictionary.push ([english, russian]);
+        localStorage.dictionary = JSON.stringify (dictionary);
+        return true;        
+    }
+
 }
 
-function createTr (english, russian) {
-    let tr = document.createElement ('tr');
-    let tdE = document.createElement ('td');
-    tdE.textContent = english;
-    let tdR = document.createElement ('td');
-    tdR.textContent = russian;
-    tr.append (tdE, tdR)
-    return tr
+export function getDictionary () {
+    let dictionary = checkExisting ();
+    return dictionary;
+}
+
+export function deleteFromDictionary (english) {
+    let dictionary = checkExisting ();
+    for (let i = 0; i < dictionary.length; i++) {
+        if (dictionary[i][0] == english) {
+            dictionary.splice (i, 1)
+            localStorage.dictionary = JSON.stringify (dictionary)
+            return true;
+        } 
+    }     
+    return false
+}
+
+// ---------------------------------------------------------------------------------------------------------------------------------------------------------
+// ---------------------------------------------------------------------------------------------------------------------------------------------------------
+function checkExisting () {
+    let dictionary;
+    if (localStorage.dictionary) {
+        return dictionary = JSON.parse (localStorage.dictionary)
+    } else {
+        return dictionary = [];
+    }
+}
+
+function checkSimilarityEmpty (english, russian) {
+    let dictionary = getDictionary()
+    for (let key of dictionary) {
+        if (key[0] == english || russian == key[1] || english == '' || russian == ''){
+            console.log('test')
+            return true;
+        }
+    }
 }

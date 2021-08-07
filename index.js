@@ -1,6 +1,6 @@
 import {add} from './add.js';
-import { deleteWord } from './delete.js';
-import {showDictionary} from './dictionary.js'
+import {deleteWord } from './delete.js';
+import {showDictionary} from './showDictionary.js'
 
 // ---------------------------------------------------------------------------------------
 let menu = `<nav id="navigation">

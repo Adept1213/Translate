@@ -1,4 +1,4 @@
-import {deleteFromStore} from './store.js';
+import {deleteFromDictionary} from './dictionary.js';
 import {warningInput} from './index.js';
 
 let str = `
@@ -10,7 +10,7 @@ export function deleteWord () {
     main.insertAdjacentHTML ('beforeend', str );
 
     deleteButton.addEventListener ('click', () => {
-        if(!deleteFromStore(englishDelete.value)) {
+        if(!deleteFromDictionary(englishDelete.value)) {
             warningInput('Nope', 'red', englishDelete)
         } else warningInput (`\"${englishDelete.value}\" was remove`, 'green', englishDelete);
          
