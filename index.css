@@ -83,6 +83,7 @@ main input {
 @media (max-width : 767px) {
     main input {
         width: 100%;
+        min-width: 1px;
     }
 }
 

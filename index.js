@@ -1,12 +1,13 @@
 import {add} from './add.js';
 import {deleteWord } from './delete.js';
-import {showDictionary} from './showDictionary.js'
+import {showDictionary} from './showDictionary.js';
+import {training} from './training.js'; 
 
 // ---------------------------------------------------------------------------------------
 let menu = `<nav id="navigation">
                 <button >Add</button>
                 <button >Delete</button>
-                <button >Translate</button>
+                <button >Training</button>
                 <button >Eternal</button>
                 <button>Dictionary</button>
             </nav>`
@@ -22,24 +23,31 @@ document.addEventListener ('DOMContentLoaded', () => {
 function clickMenu () {
     let target = event.target;
 
-    if (target.textContent == 'Kraken Translate'){ 
-        clear ()        
-        main.insertAdjacentHTML ('beforeend', menu );
-    }  
-    
-    if (target.textContent == 'Add'){
-        clear ();
-        add();
-    }
+    switch (target.textContent) {
+        case 'Kraken Translate' :
+            clear ()        
+            main.insertAdjacentHTML ('beforeend', menu );
+            break;
+        
+        case 'Add' : 
+            clear ();
+            add();
+            break;
 
-    if (target.textContent == 'Dictionary') {
-        clear ();
-        showDictionary();
-    }
-
-    if (target.textContent == 'Delete') {
-        clear ();
-        deleteWord ();
+        case 'Dictionary' : 
+            clear ();
+            showDictionary();
+            break;
+            
+        case 'Delete' : 
+            clear ();
+            deleteWord();
+            break;
+        
+        case 'Training' :
+            clear ();
+            training ();
+            break;
     }
 } 
 
