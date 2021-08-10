@@ -37,7 +37,18 @@ function checkExisting () {
     if (localStorage.dictionary) {
         return dictionary = JSON.parse (localStorage.dictionary)
     } else {
-        return dictionary = [];
+        return dictionary = [
+            ['dog', 'собака']
+            ['cat', 'кот']
+            ['home', 'дом']
+            ['phone', 'телефон']
+            ['go', 'идти']
+            ['ice', 'лёд']
+            ['TV', 'телевизор']
+            ['music', 'музыка']
+            ['water', 'вода']
+            ['money', 'деньги']
+        ];
     }
 }
 
