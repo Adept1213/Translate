@@ -6,7 +6,7 @@ function random (min, max) {
 }
 let dictionary = getDictionary();
 let str = `
-    <input id="trainingEnglish" disabled type='text' value='${dictionary[random(0, dictionary.length - 1)][0]}'>
+    <input id="trainingEnglish" disabled type='text' value=''>
     <input id="trainingRussia" type='text' placeholder="Enter Answer">
     <button id="checkAnswer">Check</button>
 `

@@ -3,6 +3,8 @@ import {deleteWord } from './delete.js';
 import {showDictionary} from './showDictionary.js';
 import {training} from './training.js'; 
 
+localStorage.removeItem ('dictionary')
+
 // ---------------------------------------------------------------------------------------
 let menu = `<nav id="navigation">
                 <button >Add</button>

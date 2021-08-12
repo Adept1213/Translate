@@ -9,7 +9,7 @@ export function showDictionary () {
     table.append (thE, thR)
 
     let store = getDictionary ();
-    for (let key of store) table.append(createTr (key[0], key[1]))
+    for (let key in store) table.append(createTr (key, store[key]))
 
     main.append (table);
 }

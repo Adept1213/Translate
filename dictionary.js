@@ -3,14 +3,14 @@
 export function addInDictionary (english, russian) {
     let dictionary = checkExisting ();
 
-    if (checkSimilarityEmpty (english, russian)) {
-        return false;
+    console.log (english)
+    if (dictionary[english] || english == '' || russian == '') {
+        return false
     } else {
-        dictionary.push ([english, russian]);
+        dictionary.english = russian;
         localStorage.dictionary = JSON.stringify (dictionary);
-        return true;        
+        return true; 
     }
-
 }
 
 export function getDictionary () {
@@ -20,14 +20,17 @@ export function getDictionary () {
 
 export function deleteFromDictionary (english) {
     let dictionary = checkExisting ();
-    for (let i = 0; i < dictionary.length; i++) {
-        if (dictionary[i][0] == english) {
-            dictionary.splice (i, 1)
-            localStorage.dictionary = JSON.stringify (dictionary)
-            return true;
-        } 
-    }     
-    return false
+
+    if (!dictionary[english]) {
+        console.log ('nope')
+        return false;
+    } else {
+        delete dictionary[english]
+        localStorage.dictionary = JSON.stringify (dictionary);
+        return true
+    }
+ 
+    
 }
 
 // ---------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -37,27 +40,18 @@ function checkExisting () {
     if (localStorage.dictionary) {
         return dictionary = JSON.parse (localStorage.dictionary)
     } else {
-        return dictionary = [
-            ['dog', 'собака']
-            ['cat', 'кот']
-            ['home', 'дом']
-            ['phone', 'телефон']
-            ['go', 'идти']
-            ['ice', 'лёд']
-            ['TV', 'телевизор']
-            ['music', 'музыка']
-            ['water', 'вода']
-            ['money', 'деньги']
-        ];
+        return dictionary = {
+            'dog': 'собака',
+            'cat': 'кот',
+            'home': 'дом',
+            'phone': 'телефон',
+            'go': 'идти',
+            'ice': 'лёд',
+            'TV': 'телевизор',
+            'music': 'музыка',
+            'water': 'вода',
+            'money': 'деньги',
+        };
     }
 }
 
-function checkSimilarityEmpty (english, russian) {
-    let dictionary = getDictionary()
-    for (let key of dictionary) {
-        if (key[0] == english || russian == key[1] || english == '' || russian == ''){
-            console.log('test')
-            return true;
-        }
-    }
-}
