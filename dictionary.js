@@ -28,9 +28,7 @@ export function deleteFromDictionary (english) {
         delete dictionary[english]
         localStorage.dictionary = JSON.stringify (dictionary);
         return true
-    }
- 
-    
+    }  
 }
 
 // ---------------------------------------------------------------------------------------------------------------------------------------------------------

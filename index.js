@@ -25,11 +25,17 @@ function clickMenu () {
     let target = event.target;
 
     switch (target.textContent) {
-        case 'Kraken Translate' :
+
+        case 'Kraken Translate':
             clear ()        
             main.insertAdjacentHTML ('beforeend', menu );
             break;
         
+        case 'Home' :
+            clear ();
+            main.insertAdjacentHTML ('beforeend', menu );
+            break;
+
         case 'Add' : 
             clear ();
             add();
@@ -55,7 +61,9 @@ function clickMenu () {
 
 
 export function clear () {
-    while (main.children.length > 0) main.firstChild.remove ()
+    while (main.children.length > 1) {
+        main.lastElementChild.remove ()    
+    }
 }
 
 export function warningInput (val, color, ...arr) {

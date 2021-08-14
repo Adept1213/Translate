@@ -47,6 +47,7 @@ button {
     opacity: 85%;
     
     color: white;
+
     background-color: #14213d;
     border: none;
     border-bottom: 2px solid white;
@@ -99,7 +100,7 @@ th {
     border-bottom: 1px solid rgb(255, 255, 255);
     width : 200px;
     height: 30px;
-    color: rgb(237, 255, 138);
+    color: #FCA311;
 }
 td {
     border-bottom: .5px solid white;
@@ -108,13 +109,40 @@ td {
     color: white;
 }
 
+span {
+    color: white;
+    font-size: 35px;
+}
+
 .warning {
     border: none;
     color : red;
     opacity: 80%;
 }
 
+.arrow {
+    width: 70px;
+    height: 70px;  
+    border: 3px solid #FCA311;
+    border-radius: 50%;
+    background-color: black;
 
+    position :absolute;
+    top : 76%;
+    left: 75%;
+
+    display: none;
+} 
+.arrow span {
+    color: white;
+    font-size: 25px;
+    line-height: 60px;
+}
+@media (max-width : 767px) {
+    .arrow {
+        display: block;
+    }
+}
 /* footer ---------------------------------------------------- */
 footer {
     height: 10%;
