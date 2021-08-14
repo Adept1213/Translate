@@ -19,7 +19,7 @@ export function training () {
     let rightAnswer = 0;
 
     checkAnswer.addEventListener ('click', () => {
-        if (dictionary[trainingEnglish.value] == trainingRussia.value) {
+        if (dictionary[trainingEnglish.value] == trainingRussia.value.toLowerCase()) {
             count++;
             rightAnswer++;
             arrEnglish.splice(arrEnglish.indexOf(), 1);

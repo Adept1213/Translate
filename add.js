@@ -11,7 +11,7 @@ export function add () {
     main.insertAdjacentHTML ('beforeend', str );
 
     buttonSave.addEventListener ('click', () => {
-        if (addInDictionary (englishAdd.value, russianAdd.value)) {
+        if (addInDictionary (englishAdd.value.toLowerCase(), russianAdd.value.toLowerCase())) {
             warningInput ("Good", 'green', englishAdd, russianAdd);
         } else {
             warningInput ("Already have or empty ", 'red', englishAdd, russianAdd);

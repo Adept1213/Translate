@@ -7,7 +7,7 @@ export function addInDictionary (english, russian) {
     if (dictionary[english] || english == '' || russian == '') {
         return false
     } else {
-        dictionary.english = russian;
+        dictionary[english] = russian;
         localStorage.dictionary = JSON.stringify (dictionary);
         return true; 
     }

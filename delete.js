@@ -10,9 +10,9 @@ export function deleteWord () {
     main.insertAdjacentHTML ('beforeend', str );
 
     deleteButton.addEventListener ('click', () => {
-        if(!deleteFromDictionary(englishDelete.value)) {
+        if(!deleteFromDictionary(englishDelete.value.toLowerCase())) {
             warningInput('Nope', 'red', englishDelete)
-        } else warningInput (`\"${englishDelete.value}\" was remove`, 'green', englishDelete);
+        } else warningInput (`\"${englishDelete.value.toLowerCase()}\" was remove`, 'green', englishDelete);
          
     })
 }
