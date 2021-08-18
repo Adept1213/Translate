@@ -67,8 +67,38 @@ export function clear () {
 }
 
 export function warningInput (val, color, ...arr) {
+    //remove another warning
+    let warnings = document.getElementsByClassName ('warning');
+    for (let key of warnings) key.remove();
+
+    //add warning
     let str = `<input disabled class='warning' value='${val}' style="color : ${color}"'>`;
     main.insertAdjacentHTML ('beforeend', str);
+
+    //clear inputs
     for (let key of arr) key.value = '';
-    setTimeout (() => document.querySelector ('.warning').remove(), 2000)
+    setTimeout (() => {
+        try {
+            document.querySelector ('.warning').remove()
+        } catch (e) {
+            if (e.name == 'TypeError') null;
+        }     
+    }, 2000)
+}
+
+export function buttonGo (f) {
+    function cbf (){ 
+        event.keyCode === 13 ? f() : null;
+    }
+    document.addEventListener ('keydown', cbf)
+
+    document.addEventListener ('click', event => {
+        let target = event.target;
+
+        if (target.textContent == 'Kraken Translate' || target.textContent == 'Home') {
+            document.removeEventListener ('keydown', cbf);
+        }
+            
+    })
+
 }

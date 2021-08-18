@@ -3,7 +3,6 @@
 export function addInDictionary (english, russian) {
     let dictionary = checkExisting ();
 
-    console.log (english)
     if (dictionary[english] || english == '' || russian == '') {
         return false
     } else {
@@ -22,7 +21,6 @@ export function deleteFromDictionary (english) {
     let dictionary = checkExisting ();
 
     if (!dictionary[english]) {
-        console.log ('nope')
         return false;
     } else {
         delete dictionary[english]

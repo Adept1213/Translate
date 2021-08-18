@@ -30,6 +30,8 @@ main {
     background-color: #14213d;
 
     border-bottom: 2px solid white;
+
+    overflow: hidden;
 }
 /* menu------------------------------------------------------ */
 nav {

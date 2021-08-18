@@ -1,5 +1,5 @@
 import {getDictionary} from './dictionary.js';
-import {warningInput} from './index.js';
+import {warningInput, buttonGo} from './index.js';
 import {showScore} from './showScore.js';
 
 function random (min, max) {
@@ -18,25 +18,29 @@ export function training () {
     let count = 0;   
     let rightAnswer = 0;
 
-    checkAnswer.addEventListener ('click', () => {
+    let trainingHelp = () => {
+        console.log (arrEnglish)
         if (dictionary[trainingEnglish.value] == trainingRussia.value.toLowerCase()) {
             count++;
             rightAnswer++;
-            arrEnglish.splice(arrEnglish.indexOf(), 1);
+            arrEnglish.splice(arrEnglish.indexOf(trainingEnglish.value), 1);
             warningInput ('YESSSsss', 'green', trainingRussia, trainingEnglish)
         } else {
             count++;
-            arrEnglish.splice(arrEnglish.indexOf(), 1);
+            arrEnglish.splice(arrEnglish.indexOf(trainingEnglish.value), 1);
             warningInput (`Nope: ${dictionary[trainingEnglish.value]}`, 'red', trainingRussia, trainingEnglish); 
         }
 
-        if (count == 3 || arrEnglish.length < 1) {
+        if (count == 10 || arrEnglish.length < 1) {
+            arrEnglish = Object.keys(dictionary);
             showScore (rightAnswer, count);
         } else {
             trainingEnglish.value = arrEnglish[random (0, arrEnglish.length - 1)] 
-        }
-         
-    })
-       
+        } 
+        console.log (arrEnglish)
+    }
+
+    checkAnswer.addEventListener ('click', trainingHelp)
+    buttonGo (trainingHelp)
 }
 
