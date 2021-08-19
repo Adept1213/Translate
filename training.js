@@ -16,7 +16,7 @@ function languageTrainin () {
     let cbf = event => {
         let start = event.clientX;
         document.addEventListener ('pointermove', event => {
-            if (event.clientX > start + 250 )
+            if (event.clientX > start + 250 ) true
         })
     }
     document.addEventListener ('pointerdown', cbf)
