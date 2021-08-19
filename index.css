@@ -32,6 +32,8 @@ main {
     border-bottom: 2px solid white;
 
     overflow: hidden;
+
+    touch-action: pan-y;
 }
 /* menu------------------------------------------------------ */
 nav {
@@ -139,6 +141,7 @@ span {
     color: white;
     font-size: 21px;
     line-height: 60px;
+    z-index: 100;
 }
 @media (max-width : 767px) {
     .arrow {

@@ -53,7 +53,7 @@ function clickMenu () {
         
         case 'Training' :
             clear ();
-            training ();
+            training ('english');
             break;
     }
 } 
