@@ -12,6 +12,9 @@ export function showDictionary () {
     for (let key in store) table.append(createTr (key, store[key]))
 
     main.append (table);
+
+    //show length dictionary
+    main.insertAdjacentHTML ('beforeend', `<span>Length - ${Object.keys(store).length}</span>`)
 }
 
 function createTr (english, russian) {

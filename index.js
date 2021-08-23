@@ -86,7 +86,7 @@ export function warningInput (val, color, ...arr) {
     }, 2000)
 }
 
-export function buttonGo (f) {
+export function buttonGo (f, f2) {
     function cbf (){ 
         event.keyCode === 13 ? f() : null;
     }
@@ -97,8 +97,8 @@ export function buttonGo (f) {
 
         if (target.textContent == 'Kraken Translate' || target.textContent == 'Home') {
             document.removeEventListener ('keydown', cbf);
-        }
-            
-    })
+            document.removeEventListener ('pointerdown', f2)
+        }           
+    }, {once : true})
 
 }

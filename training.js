@@ -1,34 +1,43 @@
 import {getDictionary} from './dictionary.js';
-import {warningInput, buttonGo} from './index.js';
+import {warningInput, buttonGo, clear} from './index.js';
 import {showScore} from './showScore.js';
 
 function random (min, max) {
     return Math.round(min + Math.random() * (max - min));
 }
+let trainingHelp;
 function getKeyByValue(object, value) {
     return Object.keys(object).find(key => object[key] === value);
   }
 let dictionary = getDictionary();
 
+let cbf = event => {
+    let start = event.clientX;
+    document.addEventListener ('pointermove', pointerMove)
 
+    document.addEventListener ('pointerup', () => {
+        document.removeEventListener ('pointermove', pointerMove);
+    },{once : true})
+
+    function pointerMove (event) {
+        if (event.clientX > start + 250) {         
+            clear ();
+            document.removeEventListener ('pointermove', pointerMove);
+            document.removeEventListener ('pointerdown', cbf);                
+            training ('russia');
+        }
+    }
+}
 
 function languageTrainin () {
-    let cbf = event => {
-        let start = event.clientX;
-        document.addEventListener ('pointermove', event => {
-            if (event.clientX > start + 250 ) true
-        })
-    }
     document.addEventListener ('pointerdown', cbf)
 }
 
 export function training (languageTraining) {
-    languageTrainin();
     let count = 0;   
     let rightAnswer = 0;
     let arrWrongAnswer = [];
     let arrWords = languageTraining == "english" ? Object.keys(dictionary) : Object.values (dictionary);
-
     let str = `
         <input id="trainingEnglish" disabled type='text' value='${arrWords[random (0, arrWords.length - 1)]}'>
         <input id="trainingRussia" type='text' placeholder="Enter Answer">
@@ -36,10 +45,9 @@ export function training (languageTraining) {
     `
     main.insertAdjacentHTML ('beforeend', str );
 
-
-    let trainingHelp = () => {
+    trainingHelp = () => {
         //check words
-        console.log (getKeyByValue (dictionary, trainingEnglish.value) == trainingRussia.value.toLowerCase())
+        console.log (getKeyByValue (dictionary, trainingEnglish.value), trainingRussia.value.toLowerCase())
         if (dictionary[trainingEnglish.value] == trainingRussia.value.toLowerCase() || getKeyByValue (dictionary, trainingEnglish.value) == trainingRussia.value.toLowerCase()) {
             count++;
             rightAnswer++;
@@ -61,8 +69,8 @@ export function training (languageTraining) {
         } 
 
     }
-
     checkAnswer.addEventListener ('click', trainingHelp)
-    buttonGo (trainingHelp)
+    buttonGo (trainingHelp, cbf)
+    languageTrainin();
 }
 
