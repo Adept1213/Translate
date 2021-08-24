@@ -86,12 +86,14 @@ export function warningInput (val, color, ...arr) {
     }, 2000)
 }
 
+
+
 export function buttonGo (f, f2) {
+    document.addEventListener ('keydown', cbf)
+    
     function cbf (){ 
         event.keyCode === 13 ? f() : null;
     }
-    document.addEventListener ('keydown', cbf)
-
     document.addEventListener ('click', event => {
         let target = event.target;
 

@@ -5,12 +5,16 @@ import {showScore} from './showScore.js';
 function random (min, max) {
     return Math.round(min + Math.random() * (max - min));
 }
-let trainingHelp;
 function getKeyByValue(object, value) {
     return Object.keys(object).find(key => object[key] === value);
-  }
+}
+
+
+
 let dictionary = getDictionary();
 
+//callback
+let trainingHelp;
 let cbf = event => {
     let start = event.clientX;
     document.addEventListener ('pointermove', pointerMove)
@@ -23,7 +27,8 @@ let cbf = event => {
         if (event.clientX > start + 250) {         
             clear ();
             document.removeEventListener ('pointermove', pointerMove);
-            document.removeEventListener ('pointerdown', cbf);                
+            document.removeEventListener ('pointerdown', cbf);
+            document.removeEventListener ('keydown', trainingHelp);        
             training ('russia');
         }
     }
@@ -38,14 +43,17 @@ export function training (languageTraining) {
     let rightAnswer = 0;
     let arrWrongAnswer = [];
     let arrWords = languageTraining == "english" ? Object.keys(dictionary) : Object.values (dictionary);
+
     let str = `
         <input id="trainingEnglish" disabled type='text' value='${arrWords[random (0, arrWords.length - 1)]}'>
         <input id="trainingRussia" type='text' placeholder="Enter Answer">
         <button id="checkAnswer">Check</button>
     `
+
     main.insertAdjacentHTML ('beforeend', str );
 
     trainingHelp = () => {
+        if (event.keyCode !== 13 && event.target.textContent != 'Check') return;
         //check words
         console.log (getKeyByValue (dictionary, trainingEnglish.value), trainingRussia.value.toLowerCase())
         if (dictionary[trainingEnglish.value] == trainingRussia.value.toLowerCase() || getKeyByValue (dictionary, trainingEnglish.value) == trainingRussia.value.toLowerCase()) {
@@ -69,8 +77,10 @@ export function training (languageTraining) {
         } 
 
     }
+
     checkAnswer.addEventListener ('click', trainingHelp)
-    buttonGo (trainingHelp, cbf)
+    document.addEventListener ('keydown', trainingHelp)
+    // buttonGo (trainingHelp, cbf)
     languageTrainin();
 }
 
