@@ -43,7 +43,6 @@ function checkExisting () {
             'phone': 'телефон',
             'go': 'идти',
             'ice': 'лёд',
-            'TV': 'телевизор',
             'music': 'музыка',
             'water': 'вода',
             'money': 'деньги',

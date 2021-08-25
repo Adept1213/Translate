@@ -153,5 +153,11 @@ footer {
     height: 10%;
 
     background-color: black;
+
+    color : #FCA311;
+    font-size: 15px;
+
+    display: flex;
+    flex-direction: column;
 }
 

@@ -55,6 +55,11 @@ function clickMenu () {
             clear ();
             training ('english');
             break;
+
+        case 'Eternal' :
+            clear ();
+            training ('english', false);
+            break;
     }
 } 
 
@@ -87,20 +92,3 @@ export function warningInput (val, color, ...arr) {
 }
 
 
-
-export function buttonGo (f, f2) {
-    document.addEventListener ('keydown', cbf)
-    
-    function cbf (){ 
-        event.keyCode === 13 ? f() : null;
-    }
-    document.addEventListener ('click', event => {
-        let target = event.target;
-
-        if (target.textContent == 'Kraken Translate' || target.textContent == 'Home') {
-            document.removeEventListener ('keydown', cbf);
-            document.removeEventListener ('pointerdown', f2)
-        }           
-    }, {once : true})
-
-}
